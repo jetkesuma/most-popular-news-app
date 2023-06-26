@@ -18,6 +18,7 @@ def data_extraction():
 
     return result
 
+
 def show_data(result):
     print('Most Popular News at CNN Indonesia')
     print(f"Most Popular News at CNN Indonesia Number 1 is {result['one']}")

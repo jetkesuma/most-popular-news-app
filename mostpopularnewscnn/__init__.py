@@ -1,3 +1,7 @@
+import requests
+from bs4 import BeautifulSoup
+
+
 def data_extraction():
     """
     1. SBY tidak masalah jika Jokowi tidak suka dengan anies baswedan
@@ -8,18 +12,31 @@ def data_extraction():
     6. Erick thohir Ungkap kekurangan JIS untuk Venue Piala Dunia U-175
     :return:
     """
-    result = dict()
-    result['one'] = 'SBY tidak masalah jika Jokowi tidak suka dengan anies baswedan'
-    result['two'] = 'Video: Bangunan 13 lantai Runtuh di Mesir, 4 Orang Terluka'
-    result['three'] = 'Prabowo mendadak dipanggil jokowi, Gelar pertemuan Tertutup di Istana'
-    result['four'] = 'Surya Paloh yakin anies tak akan jadi tersangka jelang pilpres 2024'
-    result['five'] = 'Bahas Politik, Prabowo ditanya jokowi soal rencana ke depan'
-    result['six'] = 'Erick thohir Ungkap kekurangan JIS untuk Venue Piala Dunia U-17'
+    try:
+        content = requests.get('https://www.cnnindonesia.com/')
+    except Exception:
+        return None
+    if content.status_code == 200:
+        soup = BeautifulSoup(content.text, 'html.parser')
+        one = soup.find('div', {'class': 'headline__terpopuler-list'})
 
-    return result
+        result = dict()
+        result['one'] = one.text
+        result['two'] = 'Video: Bangunan 13 lantai Runtuh di Mesir, 4 Orang Terluka'
+        result['three'] = 'Prabowo mendadak dipanggil jokowi, Gelar pertemuan Tertutup di Istana'
+        result['four'] = 'Surya Paloh yakin anies tak akan jadi tersangka jelang pilpres 2024'
+        result['five'] = 'Bahas Politik, Prabowo ditanya jokowi soal rencana ke depan'
+        result['six'] = 'Erick thohir Ungkap kekurangan JIS untuk Venue Piala Dunia U-17'
+
+        return result
+    else:
+        return None
 
 
 def show_data(result):
+    if result is None:
+        print("Cant Show data")
+        return
     print('Most Popular News at CNN Indonesia')
     print(f"Most Popular News at CNN Indonesia Number 1 is {result['one']}")
     print(f"Most Popular News at CNN Indonesia Number 2 is {result['two']}")

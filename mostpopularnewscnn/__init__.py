@@ -28,7 +28,7 @@ def data_extraction():
         numberfive = None
         numbersix = None
         for res in oke:
-            #print(i, res)
+            # print(i, res)
             if i == 0:
                 numberone = res.text
             elif i == 1:
@@ -50,7 +50,6 @@ def data_extraction():
         result['numberfour'] = numberfour
         result['numberfive'] = numberfive
         result['numbersix'] = numbersix
-
 
         return result
     else:

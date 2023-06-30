@@ -22,11 +22,7 @@ def data_extraction():
 
         result = dict()
         result['one'] = one.text
-        result['two'] = 'Video: Bangunan 13 lantai Runtuh di Mesir, 4 Orang Terluka'
-        result['three'] = 'Prabowo mendadak dipanggil jokowi, Gelar pertemuan Tertutup di Istana'
-        result['four'] = 'Surya Paloh yakin anies tak akan jadi tersangka jelang pilpres 2024'
-        result['five'] = 'Bahas Politik, Prabowo ditanya jokowi soal rencana ke depan'
-        result['six'] = 'Erick thohir Ungkap kekurangan JIS untuk Venue Piala Dunia U-17'
+
 
         return result
     else:
@@ -37,10 +33,5 @@ def show_data(result):
     if result is None:
         print("Cant Show data")
         return
-    print('Most Popular News at CNN Indonesia')
-    print(f"Most Popular News at CNN Indonesia Number 1 is {result['one']}")
-    print(f"Most Popular News at CNN Indonesia Number 2 is {result['two']}")
-    print(f"Most Popular News at CNN Indonesia Number 3 is {result['three']}")
-    print(f"Most Popular News at CNN Indonesia Number 4 is {result['four']}")
-    print(f"Most Popular News at CNN Indonesia Number 5 is {result['five']}")
-    print(f"Most Popular News at CNN Indonesia Number 6 is {result['six']}")
+    print('Most Popular News at CNN Indonesia Update')
+    print(f"Most Popular News at CNN Indonesia is {result['one']}")
